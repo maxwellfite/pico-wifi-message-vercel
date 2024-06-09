@@ -4,21 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Send a Message to Raspberry Pi Pico W</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+        #customMessage {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <h1>Send a Message to Raspberry Pi Pico W</h1>
-    <form id="messageForm">
-        <button type="submit">Send Message</button>
-    </form>
+    <div class="button-container">
+        <button data-message="Message 1">Send Message 1</button>
+        <button data-message="Message 2">Send Message 2</button>
+        <button data-message="Message 3">Send Message 3</button>
+        <button data-message="Message 4">Send Message 4</button>
+        <button data-message="Message 5">Send Message 5</button>
+        <button data-message="Message 6">Send Message 6</button>
+    </div>
+    <input type="text" id="customMessage" placeholder="Enter custom message">
+    <button id="sendCustomMessage">Send Custom Message</button>
+
     <script>
-        document.getElementById('messageForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+        const buttons = document.querySelectorAll('.button-container button');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const message = button.getAttribute('data-message');
+                sendMessage(message);
+            });
+        });
+
+        document.getElementById('sendCustomMessage').addEventListener('click', () => {
+            const customMessage = document.getElementById('customMessage').value;
+            if (customMessage) {
+                sendMessage(customMessage);
+            } else {
+                alert('Please enter a custom message.');
+            }
+        });
+
+        function sendMessage(message) {
             fetch('/api/send_message', {
-                method: 'POST'
-            }).then(response => response.json())
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message })
+            })
+            .then(response => response.json())
             .then(data => alert(data.status))
             .catch(error => console.error('Error:', error));
-        });
+        }
     </script>
 </body>
 </html>
