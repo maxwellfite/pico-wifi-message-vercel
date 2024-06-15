@@ -17,16 +17,26 @@
         h1 {
             color: #333;
         }
+        .button-section {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .button-section h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
         .button-container {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin: 20px 0;
+            justify-content: center;
+            margin: 10px 0;
         }
         .button-container button {
             width: 200px;
             padding: 10px;
             font-size: 16px;
+            font-style: italic; /* Italicize the button text */
             cursor: pointer;
             border: none;
             background-color: #8c1515; /* Stanford Cardinal */
@@ -54,20 +64,36 @@
 <body>
     <img src=".\stanford.png" alt="Stanford Logo" class="logo">
     <h1>Let Max know you are thinking of him at commencement!</h1>
-    <div class="button-container">
-        <button data-message="Congrats Max, Stanford Grad">Congrats Max, Stanford Grad!</button>
-		<button data-message="Max, EE Mastermind!">Don't shock yourself!</button>
-        <button data-message="Too cool 4 skool">Too cool 4 skool</button>
-        <button data-message="Ope, sorry, just graduated">Ope, sorry, just graduated</button>
-        <button data-message="Next stop, Minnesota!">Next stop, Minnesota!</button>
-        <button data-message="Don't trip on stage!">Don't trip on stage!</button>
-		<button data-message="I've got the current*voltage">I've got the current*voltage</button>
-		<button data-message="Couldn't have done it without ChatGPT">Couldn't have done it without ChatGPT</button>
-		<button data-message="Slow Wiggle Tassle">Slow Wiggle Tassle</button>
-		<button data-message="Fast Wiggle Tassle">Fast Wiggle Tassle</button>
-		<button data-message="Blink LEDs to 'I've got the Power'">Blink LEDs to 'I've got the Power'</button>
-		<button data-message="Blink LEDs to 'High Voltage'">Blink LEDs to 'High Voltage'</button>
-		<button data-message="Blink LEDs to 'Electric Avenue'">Blink LEDs to 'Electric Avenue'</button>
+    
+    <div class="button-section">
+        <h2>Send Message to LCD Screen on Max's Grad Cap</h2>
+        <div class="button-container">
+            <button data-message="Congrats Max, Stanford Grad">Congrats Max, Stanford Grad!</button>
+            <button data-message="Max, EE Mastermind!">Don't shock yourself!</button>
+            <button data-message="Too cool 4 skool">Too cool 4 skool</button>
+            <button data-message="Ope, sorry, just graduated">Ope, sorry, just graduated</button>
+            <button data-message="Next stop, Minnesota!">Next stop, Minnesota!</button>
+            <button data-message="Don't trip on stage!">Don't trip on stage!</button>
+            <button data-message="I've got the current*voltage">I've got the current*voltage</button>
+            <button data-message="Couldn't have done it without ChatGPT">Couldn't have done it without ChatGPT</button>
+        </div>
+    </div>
+
+    <div class="button-section">
+        <h2>Wiggle Max's Tassle</h2>
+        <div class="button-container">
+            <button data-message="Slow Wiggle Tassle">Slow Wiggle Tassle</button>
+            <button data-message="Fast Wiggle Tassle">Fast Wiggle Tassle</button>
+        </div>
+    </div>
+
+    <div class="button-section">
+        <h2>Change the Blinking Frequency of the LEDs on Max's Grad Cap</h2>
+        <div class="button-container"> 
+            <button data-message="Blink LEDs to 'I've got the Power' BPM">Blink LEDs to 'I've got the Power' BPM</button>
+            <button data-message="Blink LEDs to 'High Voltage' BPM">Blink LEDs to 'High Voltage' BPM</button>
+            <button data-message="Blink LEDs to 'Electric Avenue' BPM">Blink LEDs to 'Electric Avenue'</button>
+        </div>
     </div>
 
     <script>
