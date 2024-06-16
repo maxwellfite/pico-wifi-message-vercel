@@ -97,12 +97,13 @@
         });
 
         function sendMessage(message) {
+            const timestamp = new Date().toISOString();
             fetch('/api/send_message', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ message })
+                body: JSON.stringify({ message, timestamp })
             })
             .then(response => response.json())
             .then(data => alert(data.status))
